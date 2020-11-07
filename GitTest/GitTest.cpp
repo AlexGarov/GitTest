@@ -3,6 +3,6 @@
 
 int main()
 {
-    std::cout << "master 8:00";
+    std::cout << "master 8:32";
 }
 
