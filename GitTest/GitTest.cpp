@@ -40,8 +40,7 @@ public:
 };
 int main()
 {
-    App app(8);
-
-    std::cout << "alex 12:31";
+    std::cout << "Heloo";
+    std::cout << "alex 12:18";
 }
 
