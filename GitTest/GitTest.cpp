@@ -14,7 +14,7 @@ public:
 class B:public A
 {
 public:
-   // using A::A;
+    using A::A;
    // using A::i;
    /* B(int i):A(i)
     {
