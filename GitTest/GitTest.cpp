@@ -1,59 +1,40 @@
 #include <iostream>
 using namespace std;
-class A1
+template<int n>
+struct F
 {
-public:
-	A1()
+	enum 
 	{
-		cout << "A1\n";
-	}
-	~A1()
-	{
-		cout << "~A1\n";
-	}
+		value=n*F<n-1>::value
+	};
 };
-class A2
+template<>
+struct F<1>
+{
+	enum
+	{
+		value = 1
+	};
+};
+
+class A
 {
 public:
-	A2()
-	{
-		cout << "A2\n";
-	}
-	~A2()
-	{
-		cout << "~A2\n";
-	}
+	enum {
+		a=8
+	};
 };
 class B
 {
 public:
-	B()		
-	{
-		a1;
-		cout << "B\n";
-	}
-	~B()
-	{
-		cout << "~B\n";
-	}
-	A1 a1;
-};
-class C:public B
-{
-public:
-	C()		
-	{
-		a2;
-		cout << "C\n";
-	}
-	~C()
-	{
-		cout << "~C\n";
-	}
-	A2 a2;
+	enum {
+		a = A::a
+	};
 };
 int main()
 {
-	C c;
+	
+	auto t = B::a;
+	cout << F<15>::value << endl;
 	return 0;
 }
