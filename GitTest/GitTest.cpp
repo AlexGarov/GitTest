@@ -1,46 +1,59 @@
-
 #include <iostream>
 using namespace std;
-class A
+class A1
 {
 public:
-    
-    A(int a)
-    {
-        i = a;
-    }
-    int i;
+	A1()
+	{
+		cout << "A1\n";
+	}
+	~A1()
+	{
+		cout << "~A1\n";
+	}
 };
-class B:public A
+class A2
 {
 public:
-    using A::A;
-   // using A::i;
-   /* B(int i):A(i)
-    {
-
-    }*/
-   
-       void Bind()
-       {
-           cout << " Bind(int i)::B= "<<i<<endl;
-
-       }
-       
+	A2()
+	{
+		cout << "A2\n";
+	}
+	~A2()
+	{
+		cout << "~A2\n";
+	}
 };
-class App
+class B
 {
 public:
-    App(int i)
-    {
-        b = new B(i);
-        b->Bind();
-    };
-    B *b;
+	B()		
+	{
+		a1;
+		cout << "B\n";
+	}
+	~B()
+	{
+		cout << "~B\n";
+	}
+	A1 a1;
+};
+class C:public B
+{
+public:
+	C()		
+	{
+		a2;
+		cout << "C\n";
+	}
+	~C()
+	{
+		cout << "~C\n";
+	}
+	A2 a2;
 };
 int main()
 {
-    std::cout << "Heloo";
-    std::cout << "alex 12:18";
+	C c;
+	return 0;
 }
-
