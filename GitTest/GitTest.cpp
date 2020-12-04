@@ -1,40 +1,20 @@
 #include <iostream>
-using namespace std;
-template<int n>
-struct F
-{
-	enum 
-	{
-		value=n*F<n-1>::value
-	};
-};
-template<>
-struct F<1>
-{
-	enum
-	{
-		value = 1
-	};
-};
 
-class A
+using namespace std;
+void print()
 {
-public:
-	enum {
-		a=8
-	};
-};
-class B
+}
+template<typename T, typename ...Types>
+void print(T firstArg, Types ...arg)
 {
-public:
-	enum {
-		a = A::a
-	};
-};
+	cout << firstArg << endl;
+	print(arg ...);
+}
 int main()
 {
+	int t = 9;
+	int* pt = &t;
+	print(2, "hgjf", 785.89f,pt ,*pt);
 	
-	auto t = B::a;
-	cout << F<15>::value << endl;
 	return 0;
 }
