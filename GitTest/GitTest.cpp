@@ -1,80 +1,32 @@
 #include<iostream>
 #include<vector>
-using namespace std;
-enum MyEnum
+template<char T>
+int calculete(int arg1, int arg2);
+template<>
+int calculete<'+'>(int arg1, int arg2)
 {
-	myINT,
-	myFLOAT
-};
-struct MyStruct
+	return arg1 + arg2;
+}
+template<>
+int calculete<'-'>(int arg1, int arg2)
 {
-	char const* str;
-	MyEnum my_enum;
-};
-
-class MyClass
+	return arg1 - arg2;
+}
+template<>
+int calculete<'*'>(int arg1, int arg2)
 {
-
-public:
-	enum ElementType
-	{
-		INTEGER,
-		FLOATER
-	};
-	MyClass(ElementType type)
-		:
-		_type(type)
-	{}
-	template<ElementType>
-	struct Map;
-
-	template<>struct Map<INTEGER>
-	{
-		using myType = int;
-		static constexpr char const* name = "alex";
-		static constexpr MyEnum myEnum = myINT;
-
-	};
-
-	template<>struct Map<FLOATER>
-	{
-		using myType = float;
-		static constexpr char const* name = "kola";
-		static constexpr MyEnum myEnum = myFLOAT;
-	};
-
-	MyStruct GetDes()
-	{
-		switch (_type)
-		{
-		case INTEGER:
-			return GenerateDes<INTEGER>();
-		case FLOATER:
-			return GenerateDes<FLOATER>();
-		default:
-			break;
-		}
-	}
-	template<ElementType Type>
-	MyStruct GenerateDes()
-	{
-		return{ Map<Type>::name, Map<Type>::myEnum };
-	}
-
-	
-
-	ElementType _type;
-
-};
-
+	return arg1 * arg2;
+}
+template<>
+int calculete<'/'>(int arg1, int arg2)
+{
+	return arg1 / arg2;
+}
 
 int main()
 {
-	vector<MyStruct> vMyStruct;
-	MyClass mci{ MyClass::ElementType::INTEGER};
-	MyClass mcf{ MyClass::ElementType::FLOATER };
-	vMyStruct.push_back(mci.GetDes());
-	vMyStruct.push_back(mcf.GetDes());
+	
+	auto i = calculete<'+'>(2, 7);
 	int stop = 0;
 	return 0;
 }
